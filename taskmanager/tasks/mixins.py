@@ -2,7 +2,7 @@ from django.http import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
 from .service import can_add_task_to_sprint
 
-class SprintTaskWithinRangeMixin:
+class SprintTaskMixin:
     """
     Mixin to ensure a task being created or updated is within
     the date range of its associated sprint.
@@ -19,3 +19,4 @@ class SprintTaskWithinRangeMixin:
                         "Task's creation date is outside the date range of the associated sprint."  
                     )
                 return super().dispatch(request, *args, **kwargs)
+            

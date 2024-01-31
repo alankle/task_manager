@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .api import api
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -23,4 +24,5 @@ urlpatterns = [
         "", include("tasks.urls", namespace="tasks")
     ),  # Including tasks URLs with a namespace
     path("__debug__/", include("debug_toolbar.urls")),
+    path("api/v1/", api.urls),
 ]

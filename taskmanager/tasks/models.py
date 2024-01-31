@@ -14,7 +14,10 @@ class Epic(models.Model):
     creator = models.ForeignKey(User,
     related_name='created_epics', on_delete=models.CASCADE)
     
-class Task(models.Model):
+class VersionMixing:
+    version = models.IntegerField(default=0)
+    
+class Task(VersionMixing, models.Model):
     STATUS_CHOICES = [
         ("UNASSIGNED", "Unassigned"),
         ("IN_PROGRESS", "In Progress"),
