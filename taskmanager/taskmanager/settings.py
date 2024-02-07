@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-pii2##76o!1qu2qd4--d9--x2vkx3n4!wu1cg1-%tc6d8mro$m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: list = []
 
 INTERNAL_IPS = [
     # ...
@@ -34,6 +34,13 @@ INTERNAL_IPS = [
     # ...
 ]
 
+LOGIN_REDIRECT_URL = "tasks:home"
+LOGOUT_REDIRECT_URL = "accounts:login"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "127.0.0.1"
+EMAIL_PORT = 1025
+EMAIL_USE_TLS = False
 
 # Application definition
 
@@ -47,6 +54,8 @@ INSTALLED_APPS = [
     "tasks",
     "django_extensions",
     "debug_toolbar",
+    "accounts",
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +67,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    
 ]
 
 ROOT_URLCONF = "taskmanager.urls"

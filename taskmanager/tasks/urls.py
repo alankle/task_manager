@@ -18,8 +18,8 @@ handler404 = 'tasks.views.custom_404'
 
 app_name = "tasks"  # This is for namespacing the URLs
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="tasks/home.html"), name="home"),
-    path("help/", TemplateView.as_view(template_name="tasks/help.html"), name="help"),
+    path("", TemplateView.as_view(template_name="home.html"), name="home"),
+    path("help/", TemplateView.as_view(template_name="help.html"), name="help"),
     path("tasks/", TaskListView.as_view(), name="task-list"), #GET
     path("tasks/new/", TaskCreateView.as_view(), name="task-create"), # POST
     path("tasks/<int:pk>/", TaskDetailView.as_view(), name="task-detail"), # GET

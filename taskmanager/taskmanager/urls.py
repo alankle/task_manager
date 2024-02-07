@@ -24,5 +24,6 @@ urlpatterns = [
         "", include("tasks.urls", namespace="tasks")
     ),  # Including tasks URLs with a namespace
     path("__debug__/", include("debug_toolbar.urls")),
-    path("api/v1/", api.urls),
+    path("api/", api.urls),
+    path("accounts/", include("accounts.urls")),
 ]

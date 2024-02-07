@@ -1,11 +1,22 @@
 <header class="d-flex justify-content-between align-items-center p-3">
-<!-- Left side -->
-<div>
-<button type="button" class="btn btn-primary">Create</button>
-</div>
-<!-- Right side -->
-<div class="d-flex">
-<input type="text" class="form-control" id="search" placeholder="Search">
-<button type="button" class="btn btn-success ml-2">Search</button>
-</div>
+    <!-- Left side -->
+    <div>
+        <button type="button" class="btn btn-primary">Create</button>
+    </div>
+
+    <!-- Login/Logout links -->
+    {% if user.is_authenticated %}
+        <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2"
+        role="button">{{user.username}}: Logout </a>
+    {% else %}
+        <a href="{% url 'accounts:login' %}" class="btn btn-info ml-2"
+        role="button">Login</a>
+    {% endif %}
+
+    <!-- Right side -->
+    <div class="d-flex">
+        <input type="text" class="form-control" id="search" placeholder="Search">
+        <button type="button" class="btn btn-success ml-2">Search</button>
+    </div>
 </header>
+
